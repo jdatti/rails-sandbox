@@ -8,6 +8,15 @@
 </head>
 <body>
 
+  <header class="navbar navbar-fixed-top">
+    <nav class="navbar-inner">
+      <div class="container">
+        <%= render 'layouts/navigation' %>
+      </div>
+    </nav>
+  </header>
+
+<%= render 'layouts/messages' %>
 <%= yield %>
 
 </body>

@@ -34,4 +34,8 @@ Firsttest::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+
+  # Set logger level to debug
+  config.log_level = :debug
+  
 end

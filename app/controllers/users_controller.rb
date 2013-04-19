@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
-  # GET /users
+  before_filter :require_login
+ 
+    # GET /users
   # GET /users.json
   def index
     @users = User.all
@@ -34,7 +36,9 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
+    logger.debug "editing a user #{params[:id]}"
     @user = User.find(params[:id])
+    logger.debug "found user #{@user} in db"
   end
 
   # POST /users
@@ -78,6 +82,15 @@ class UsersController < ApplicationController
     respond_to do |format|
       format.html { redirect_to users_url }
       format.json { head :no_content }
+    end
+  end
+
+  private
+ 
+  def require_login
+    unless user_signed_in?
+      flash[:error] = "You must be logged in to access this page"
+      redirect_to signin_url # halts request cycle
     end
   end
 end
