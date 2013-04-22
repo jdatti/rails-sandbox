@@ -1,9 +1,11 @@
 Firsttest::Application.routes.draw do
+  resources :songs
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
   match '/signup',  to: 'users#new'
   match '/signin',  to: 'sessions#new'
   match '/signout', to: 'sessions#destroy'
+  match '/search',  to: 'songs#search'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -54,7 +56,7 @@ Firsttest::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => 'sessions#new'
+  root :to => 'songs#search'
 
   # See how all your routes lay out with "rake routes"
 
