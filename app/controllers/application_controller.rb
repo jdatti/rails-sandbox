@@ -20,4 +20,11 @@ class ApplicationController < ActionController::Base
   def user_signed_out?
     !user_signed_in?
   end
+
+  def require_login
+    unless user_signed_in?
+      flash[:error] = "You must be logged in to access this page"
+      redirect_to signin_url # halts request cycle
+    end
+  end
 end

@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+  include SongsHelper
 
   def new
     logger.debug "creating a new session"
@@ -8,10 +9,10 @@ class SessionsController < ApplicationController
     user = User.find_by_email(params[:session][:email].downcase)
     if user && user.authenticate(params[:session][:password])
       logger.debug "New User logging  in: #{@current_user}"
-      @users = User.all
       session[:user_id] = user.id
       session[:user] = user
-      render 'users/index'
+      user_songs
+      redirect_to songs_path
     else
       flash[:error] = 'Invalid email/password combination' # Not quite right!
       render 'new'

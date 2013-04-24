@@ -11,7 +11,22 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130415040400) do
+ActiveRecord::Schema.define(:version => 20130424052230) do
+
+  create_table "songs", :force => true do |t|
+    t.string   "title"
+    t.text     "body"
+    t.string   "upload_path"
+    t.boolean  "published"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+    t.string   "mp3"
+    t.string   "mp3_file_name"
+    t.string   "mp3_content_type"
+    t.integer  "mp3_file_size"
+    t.datetime "mp3_updated_at"
+    t.integer  "user_id"
+  end
 
   create_table "users", :force => true do |t|
     t.string   "name"

@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @song.title %>
+</p>
+
+<p>
+  <b>Body:</b>
+  <%= @song.body %>
+</p>
+
+<p>
+  <b>Path:</b>
+  <%= link_to "Click here to Play", @song.mp3.url %>
+</p>
+
+
+<%= link_to 'Back', songs_path %>
