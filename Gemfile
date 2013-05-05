@@ -41,3 +41,6 @@ gem 'jquery-rails'
 
 # To use debugger
 # gem 'debugger'
+group :development do
+  gem 'better_errors'
+end

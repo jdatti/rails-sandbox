@@ -1,6 +1,6 @@
 class SongsController < ApplicationController
   include SongsHelper
-  
+
   before_filter :require_login, :except => [:search]
   
   def new
@@ -30,6 +30,7 @@ class SongsController < ApplicationController
   end
 
   def search
-
+    keyword = params[:q]
+    @songs = Song.find(:all, :conditions => ["title LIKE ?", "%#{keyword}%"])
   end
 end
